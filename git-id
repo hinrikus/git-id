@@ -41,7 +41,7 @@ for index,identity in enumerate(identities):
 
 
 if match_length == 0:
-    cur_id = 1
+    cur_id = 0
 
 print("*"*80)
 for i,_ in enumerate(identities):
