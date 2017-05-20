@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 # vim:set ft=python et ai softtabstop=4 shiftwidth=4 smartindent:
 
-import os, subprocess
+import subprocess
+import os
 from os.path import realpath
 import toml
 import sys
