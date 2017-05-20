@@ -15,7 +15,8 @@ $ git id
 
 ## License 
 
-CC BY-SA 4.0 
-Daniel Schulte and Hinrikus Wolf
-https://creativecommons.org/licenses/by-sa/4.0/
+
+Copyright (c) 2017 Daniel Schulte and Hinrikus Wolf
+MIT License
+
 
