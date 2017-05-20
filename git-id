@@ -1,0 +1,75 @@
+#!/usr/bin/python3
+# vim:set ft=python et ai softtabstop=4 shiftwidth=4 smartindent:
+
+import os, subprocess
+from os.path import realpath
+import toml 
+import sys
+
+with open(os.path.expanduser('~/.config/git-id.rc')) as fd:
+    config = toml.load(fd)
+
+
+
+
+identities = config['id']
+search_author = config['global']['search_author']
+
+rc=subprocess.run(["git", "log", "--author={}".format(search_author), "-n1", "--format=%ae"],
+                  stdout=subprocess.PIPE,
+                  stderr=subprocess.DEVNULL,
+                  encoding="utf-8")
+
+last_email=rc.stdout.strip()
+cwd = os.getcwd()
+
+cur_id = None
+for k, v in enumerate(identities):
+    if last_email == v["email"]:
+        cur_id = k
+        break
+
+match_length = 0
+
+for index,identity in enumerate(identities): 
+    if "paths" in identity:
+        for path in identity["paths"]:
+            if cwd.startswith(realpath(path)) and len(path) > match_lenght:
+                match_length = len(path)
+                cur_id = index
+               
+
+
+if match_length == 0:
+    cur_id = 1
+
+print("*"*80)
+for i,_ in enumerate(identities):
+    if i==cur_id: 
+        default_ind = "***"
+    else:
+        default_ind = "   "
+    print("{}: {} {} ({})".format(i, default_ind, identities[i]["name"], identities[i]["email"]))
+
+choice = None
+while choice is None:
+    print("Select your id [{}]: ".format(cur_id), end="")
+    try:
+        choice = input()
+    except KeyboardInterrupt:
+        sys.exit(0)
+    if choice is "":
+        choice = cur_id
+        break
+    try:
+        choice = int(choice)
+        if choice < 1 or choice >= len(identities):
+            choice=None 
+    except:
+        choice = None
+
+identity = identities[choice]
+
+subprocess.Popen(["git", "config", "user.email", identity["email"]])
+subprocess.Popen(["git", "config", "user.name", identity["name"]])
+

@@ -1,0 +1,18 @@
+[global]
+  search_author = "Gustav"
+
+[[id]]
+  name  = "Gustav Geier"
+  email = "gustav@geier-private.com"
+
+[[id]] 
+  name  = "Gustav Geier"
+  email = "gustav.geier@rwth-aachen.de"
+  paths = ["/home/gustav/uni", "/data/gustav/work/project"]
+  
+[[id]]
+  name  = "Gustav Geier (Work)"
+  email = "gustav.geier@work.rwth-aachen.de"
+  paths = ["/home/gustav/uni/work", "/data/gustav/work"]
+
+  
