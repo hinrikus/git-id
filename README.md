@@ -10,7 +10,7 @@ Git-id is now available as a git subcommand.
 $ git id 
 
 ## Requirements
-- python3.5 or newer
+- python3.6 or newer
 - python-toml (https://pypi.python.org/pypi/toml/0.9.2)
 
 ## License 
