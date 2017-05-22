@@ -32,7 +32,7 @@ match_length = 0
 for index, identity in enumerate(identities):
     if "paths" in identity:
         for path in identity["paths"]:
-            if cwd.startswith(realpath(path)) and len(path) > match_lenght:
+            if cwd.startswith(realpath(path)) and len(path) > match_length:
                 match_length = len(path)
                 cur_id = index
 
@@ -59,7 +59,7 @@ while choice is None:
         break
     try:
         choice = int(choice)
-        if choice < 1 or choice >= len(identities):
+        if choice < 0 or choice >= len(identities):
             choice = None
     except:
         choice = None
