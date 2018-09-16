@@ -22,11 +22,6 @@ last_email = rc.stdout.strip()
 cwd = os.getcwd()
 
 cur_id = None
-for k, v in enumerate(identities):
-    if last_email == v["email"]:
-        cur_id = k
-        break
-
 match_length = 0
 
 for index, identity in enumerate(identities):
@@ -36,7 +31,12 @@ for index, identity in enumerate(identities):
                 match_length = len(path)
                 cur_id = index
 
-if match_length == 0:
+for k, v in enumerate(identities):
+    if last_email == v["email"]:
+        cur_id = k
+        break
+
+if cur_id is None:
     cur_id = 0
 
 print("*" * 80)
