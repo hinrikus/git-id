@@ -13,7 +13,7 @@ with open(os.path.expanduser('~/.config/git-id.rc')) as fd:
 identities = config['id']
 search_author = config['global']['search_author']
 
-rc = subprocess.run(["git", "log", "--author=\"{}\"".format(search_author), "-n1", "--format=%ae"],
+rc = subprocess.run(["git", "log", "--author={}".format(search_author), "-n1", "--format=%ae"],
                     stdout=subprocess.PIPE,
                     stderr=subprocess.DEVNULL,
                     encoding="utf-8")
