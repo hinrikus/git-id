@@ -54,7 +54,7 @@ while choice is None:
         choice = input()
     except KeyboardInterrupt:
         sys.exit(0)
-    if choice is "":
+    if choice == "":
         choice = cur_id
         break
     try:
