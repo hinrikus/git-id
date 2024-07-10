@@ -66,5 +66,5 @@ while choice is None:
 
 identity = identities[choice]
 
-subprocess.Popen(["git", "config", "user.email", identity["email"]])
-subprocess.Popen(["git", "config", "user.name", identity["name"]])
+subprocess.run(["git", "config", "user.email", identity["email"]])
+subprocess.run(["git", "config", "user.name", identity["name"]])
